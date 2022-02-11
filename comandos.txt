@@ -1,0 +1,4 @@
+npm i express --save or -S 
+npm i cors -S 
+npm i body-parser -S
+npm i mongoose -S
