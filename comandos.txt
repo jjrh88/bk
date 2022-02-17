@@ -2,3 +2,16 @@ npm i express --save or -S
 npm i cors -S 
 npm i body-parser -S
 npm i mongoose -S
+npm i nodemon -D
+npm i nodemailer -S
+npm i nodemailer-smtp-transport -S
+npm i amqplib -S
+npm i socket.io -S
+npm i socket.io-client
+
+
+.1 Emitir informacion por un evento llamado transacion la siguiente
+ informacion en un forma de un objeto 
+ { id: , valor: , interes: , fecha:, hora, cliente: }
+
+ 2. Recibir la respuesta en el front
