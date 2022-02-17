@@ -57,7 +57,7 @@ ctrlContact.update = async (req, res) => {
  }
 
  ctrlContact.search = async(req, res)=>{
-     const { name } = req.body
+    const { name } = req.body
     const contact = await Contact.find({ name : { $regex: ".*" + name + ".*" } })
     res.json(contact)
  }
