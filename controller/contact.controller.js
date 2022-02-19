@@ -1,4 +1,5 @@
 const { send } = require('express/lib/response')
+const consumer = require('../io/consumer')
 const contact = require('../model/contact')
 
 /*
@@ -13,7 +14,7 @@ const ctrlContact = {}
    Contact = require('../model/contact')
    mail = require('../service/mail')
    sendMQ = require('../service/send')
-
+  
 //post
 ctrlContact.create = async(req, res) =>{
     //desestructuracion}
@@ -28,6 +29,7 @@ ctrlContact.create = async(req, res) =>{
 
     //sendMQ.sendToNewQueue("contact", email)
     //mail.sendMailContact( req.body )
+   // consumer.start
     res.json({ status: true })
 }
 
@@ -51,8 +53,8 @@ ctrlContact.remove = async(req, res) =>{
 ctrlContact.update = async (req, res) => {
     console.log( req.body  )
     const {_id, name, email, subject, message } = req.body 
-    let toUpdate = {name:name, email: email, subject: subject, message: message}
-    await Contact.findOneAndUpdate({_id:_id}, toUpdate, { new: true } )
+    let toUpdate = { name:name, email: email, subject: subject, message: message}
+    await Contact.findOneAndUpdate({_id:_id}, toUpdate)
     res.json({status: true})
  }
 
