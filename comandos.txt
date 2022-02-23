@@ -8,6 +8,7 @@ npm i nodemailer-smtp-transport -S
 npm i amqplib -S
 npm i socket.io -S
 npm i socket.io-client
+npm i mongoose-gridfs
 
 
 .1 Emitir informacion por un evento llamado transacion la siguiente
