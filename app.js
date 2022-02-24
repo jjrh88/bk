@@ -27,7 +27,12 @@ const express = require('express')
    
     consumer.start(io)
     init = require('./init/init')
+    //init.createRoles()
     //init.createUser()
+    //init.createModules()
+    //init.createAsignedModuleToRolUser()
+    init.createRolUser()
+
     app.use(bodyParser.urlencoded({ extended: false }))
     app.use(bodyParser.json())
     app.use(cors())
