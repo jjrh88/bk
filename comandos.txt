@@ -9,6 +9,8 @@ npm i amqplib -S
 npm i socket.io -S
 npm i socket.io-client
 npm i mongoose-gridfs
+npm i bcrypt-nodejs -S
+npm install jsonwebtoken -S
 
 
 .1 Emitir informacion por un evento llamado transacion la siguiente
