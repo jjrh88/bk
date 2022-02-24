@@ -3,5 +3,7 @@ const express = require('express'),
     authCtrl = require('../controller/auth.controller')
 
 router.post('/', authCtrl.signIn)
+router.get('/:token', authCtrl.isLogged)
+
 
 module.exports = router

@@ -48,6 +48,18 @@ async function signIn(req, res)
     
 }
 
+
+async function isLogged(req, res)
+{
+  jwt.verify(req.params.token, config.SECRET_TOKEN, (err, data) =>{
+    if(err)
+      res.json({ status : false })
+    else
+      res.json({ status : true })
+  });
+}
+
 module.exports = {
-    signIn
+    signIn,
+    isLogged
 }
