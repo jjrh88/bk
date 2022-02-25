@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt-nodejs')
       User = require('../model/user')
+      RolUser = require('../model/rolUser')
+      AssinedModuleToRol = require('../model/assinedModuleToRol')
       jwt = require('jsonwebtoken')
       config = require("../config/config")
 
@@ -19,25 +21,29 @@ async function signIn(req, res)
                 bcrypt.compare(password, userFound.password ,(err, isMatch)=>{
                     if( isMatch == true ){
                         userFound.password = ''
-                        console.log( userFound )
                         jwt.sign({ userFound }, config.SECRET_TOKEN , { expiresIn: '1h' }, (err, token) =>{
                             if(err){
                                 res.sendStatus(403);
                             }
                             else
                             {
-                                res.json({ message: 'Has iniciado sesión',
-                                    userFound,
-                                    //expiredIn:authData.exp,
-                                    token,
-                                    status:true
+                                RolUser.findOne({ userId: userFound._id }, (err, info)=>{
+                                    AssinedModuleToRol.find({ rol: info.rol}, (err, modulos)=>{
+                                        let modules = modulos[0]
+                                        res.json({ message: 'Has iniciado sesión',
+                                            userFound,
+                                            rol: info.rol,
+                                            token,
+                                            modules,
+                                            status:true
+                                        })
+                                    })
                                 })
                             }
                         });
                     }
                     else
                       res.status(200).send({ message: 'El usuario con el que intentas ingresar no existe en el sistema.' , status : false })
-                    
                 })
             })
             
