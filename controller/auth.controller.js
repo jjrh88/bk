@@ -30,35 +30,16 @@ async function signIn(req, res)
                             else
                             {
                                 RolUser.findOne({ userId: userFound._id }, (err, info)=>{
-                                    if(info != null && info === "Object"){
-                                        AssinedModuleToRol.find({ rol: info.rol}, (err, modulos)=>{
-                                            if(modules != null && modulos === "Object"){
-                                                let modules = modulos[0]
-                                                res.json({ message: msg,
-                                                    userFound,
-                                                    rol: info.rol,
-                                                    token,
-                                                    modules,
-                                                    status:status
-                                                })
-                                            }
-                                            else{
-                                                res.json({ message: msg,
-                                                    userFound,
-                                                    rol: info.rol,
-                                                    token,
-                                                    status:status
-                                                })
-                                            }
-                                        })
-                                    }else{
+                                    AssinedModuleToRol.find({ rol: info.rol}, (err, modulos)=>{
+                                        let modules = modulos[0]
                                         res.json({ message: msg,
                                             userFound,
                                             rol: info.rol,
                                             token,
+                                            modules,
                                             status:status
                                         })
-                                    }
+                                    })
                                 })
                             }
                         });

@@ -5,7 +5,7 @@ const assignedToRolModuleSchema = new mongoose.Schema
 ({
     rol: String,
     modulo: [
-     { name: String }
+     { name: String, url: String }
     ]
 })
 

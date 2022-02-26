@@ -50,7 +50,7 @@ exports.createRoles = () =>{
 
 exports.createModules = () =>{
    var modules = new Modules({
-       modulo: "usuarios", 
+       modulo: "usuarios", url:"admin/usuarios",
         submodulos:[
             { name: "listar" ,
                 opciones: [
@@ -70,7 +70,7 @@ exports.createModules = () =>{
                 ]
             }  
         ],
-        modulo: "inventario", 
+        modulo: "inventario", url:"admin/inventario",
         submodulos:[
             { name: "listar" ,
                 opciones: [
@@ -90,7 +90,7 @@ exports.createModules = () =>{
                 ]
             }  
         ],
-        modulo: "contabilidad", 
+        modulo: "contabilidad", url:"admin/contabilidad",
         submodulos:[
             { name: "listar" ,
                 opciones: [
